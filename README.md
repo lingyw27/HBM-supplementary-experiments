@@ -19,10 +19,10 @@ Percent accuracy as shown in the final table supplied for this archive:
 - `fp16-clean`: FP16 reference worker and its run configuration.
 - `int8-clean`: symmetric INT8 W8A16 RTN, group size 128, BF16 compute.
 - `int8-ber003`: INT8 BER 0.003 one-to-zero fault injection without protection.
-- `specc`: high-nibble Hamming(7,4) encoding and low-nibble-only fault injection, using the selected teacher-protocol worker.
+- `specc`: Hamming(7,4) encoding for each INT8 high nibble; BER 0.003 one-to-zero faults are injected only into eligible raw low-nibble bits. Encoded high-nibble codeword bits are excluded from fault injection.
 - `srlr`: INT8 SRLR worker plus the MathQA replay worker/config used for the three-task result set.
 
-The INT8 protection runs use the Qwen3-8B snapshot and the 252 non-`lm_head` linear weight matrices recorded in their configs. Embeddings, `lm_head`, scales, and biases are outside the protected/injected payload. The SPECC config uses BER 0.003 over eligible raw low-nibble bits; its high-nibble codeword bits are excluded from injection. SRLR uses the BER and payload definition recorded in its config.
+The INT8 protection runs use the Qwen3-8B snapshot and the 252 non-`lm_head` linear weight matrices recorded in their configs. Embeddings, `lm_head`, scales, and biases are outside the protected/injected payload. SRLR uses the BER and payload definition recorded in its config.
 
 ## Running and required inputs
 
