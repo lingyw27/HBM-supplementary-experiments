@@ -1,12 +1,12 @@
-# Qwen3-8B selected experiments
+# Qwen3-8B HBM Supplementary Experiments
 
-This folder contains only the five code groups behind the selected result table. It is intended as a source handoff and GitHub-ready code archive; model weights, datasets, masks, logs, and full benchmark outputs are not included.
+This repository organizes five selected Qwen3-8B experiment groups and their benchmark results: an FP16 reference, clean and fault-injected INT8 baselines, an INT8 adaptation of SPECC (Sparrow ECC), and SRLR.
 
 ## Selected results
 
-Percent accuracy as shown in the final table supplied for this archive:
+Accuracy values from the selected result table:
 
-| Code folder | MathQA | MMLU | HumanEval |
+| Experiment | MathQA | MMLU | HumanEval |
 |---|---:|---:|---:|
 | `fp16-clean` | 84.90% | 72.30% | 82.32% |
 | `int8-clean` | 84.90% | 72.20% | 83.54% |
@@ -14,27 +14,16 @@ Percent accuracy as shown in the final table supplied for this archive:
 | `specc` | 84.39% | 72.36% | 82.87% |
 | `srlr` | 80.40% | 71.13% | 78.17% |
 
-## Folders
+## Repository structure
 
-- `fp16-clean`: FP16 reference worker and its run configuration.
-- `int8-clean`: symmetric INT8 W8A16 RTN, group size 128, BF16 compute.
-- `int8-ber003`: INT8 BER 0.003 one-to-zero fault injection without protection.
-- `specc`: SPECC (Sparrow ECC), adapted for this INT8 experiment. Each high nibble is encoded with Hamming(7,4), and encoded high-nibble bits are excluded from fault injection. BER 0.003 one-to-zero faults are injected only into eligible raw low-nibble bits. Because high-nibble codeword bits are not faulted, this run does not measure ECC recovery from high-nibble errors.
-- `srlr`: INT8 SRLR worker plus the MathQA replay worker/config used for the three-task result set.
+- `fp16-clean/`: FP16 reference experiment.
+- `int8-clean/`: clean INT8 baseline.
+- `int8-ber003/`: unprotected INT8 baseline with BER 0.003 fault injection.
+- `specc/`: SPECC (Sparrow ECC), adapted for this INT8 experiment. Each high nibble is encoded with Hamming(7,4); encoded high-nibble bits are excluded from fault injection. BER 0.003 one-to-zero faults are injected only into eligible raw low-nibble bits. Since high-nibble codeword bits are not faulted, this run does not measure ECC recovery from high-nibble errors.
+- `srlr/`: SRLR experiment, including the MathQA replay worker and configuration used for the three-benchmark result set.
 
-The INT8 protection runs use the Qwen3-8B snapshot and the 252 non-`lm_head` linear weight matrices recorded in their configs. Embeddings, `lm_head`, scales, and biases are outside the protected/injected payload. SRLR uses the BER and payload definition recorded in its config.
+## Experiment configuration
 
-## Running and required inputs
+The INT8 experiments use symmetric W8A16 RTN quantization with group size 128 and BF16 compute. Protection and fault injection cover the 252 non-`lm_head` linear weight matrices specified in the experiment configurations; embeddings, `lm_head`, scales, and biases are excluded.
 
-Each worker expects to be launched with its group folder as the working directory and its JSON config as the first argument, for example:
-
-```bash
-cd int8-clean
-python worker.py config.json
-```
-
-The configured model and fixed benchmark datasets must be made available in the relative locations expected by the worker/config. They are not copied into this source archive. The SRLR MathQA replay expects the SRLR run's frozen artifacts to exist before replaying MathQA.
-
-## Privacy and provenance
-
-The packaged source contains no account credentials or personal machine profile paths. Server-root literals were changed to folder-relative roots where needed, and identity-like shorthand in code identifiers/log labels was replaced with neutral protocol wording; these changes do not alter sampling or evaluation logic. `provenance.json` in each folder records source and packaged SHA-256 hashes and those portability edits. Runtime outputs are directed to a relative `results_int8/` folder under the selected code group.
+For the SPECC INT8 adaptation, eligible raw low-nibble bits use a one-to-zero fault model at BER 0.003. Hamming(7,4)-encoded high-nibble bits are excluded from injection. SRLR uses the BER and payload definition recorded in its own configuration.
