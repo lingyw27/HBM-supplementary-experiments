@@ -1,0 +1,95 @@
+{
+  "package": "Qwen3-8B",
+  "files": [
+    {
+      "path": "fp16-clean/config.json",
+      "size_bytes": 595,
+      "sha256": "19556a59a5820803cbf3a11c2e07915fe9f4b688478cb6b806fa1b627bdf5c1a"
+    },
+    {
+      "path": "fp16-clean/provenance.json",
+      "size_bytes": 739,
+      "sha256": "338f5ed47926d1ebf1d52f17d48f55449405adbae49ba9cb481b76975d113072"
+    },
+    {
+      "path": "fp16-clean/worker.py",
+      "size_bytes": 77227,
+      "sha256": "8f3fbd12309b1551aa727912f4d5a8ddcd7d8074d6b302e54db88531a47f4f78"
+    },
+    {
+      "path": "int8-ber003/config.json",
+      "size_bytes": 694,
+      "sha256": "c60a2164258b837fed77454c8c00bde6ded4b91dd3bed7e8c1dd9776a0baca7e"
+    },
+    {
+      "path": "int8-ber003/provenance.json",
+      "size_bytes": 910,
+      "sha256": "843014cec5a8848d5c91e12b263b0dacf3086873754b2e00913fd8c32ab10700"
+    },
+    {
+      "path": "int8-ber003/worker.py",
+      "size_bytes": 73855,
+      "sha256": "88e48f42c71dd761049777eed66da882f9ecf5dc87e86fc3b2595cdd894f1686"
+    },
+    {
+      "path": "int8-clean/config.json",
+      "size_bytes": 718,
+      "sha256": "59fa3263d517edf7e95c26dbf6a7c9cf20f35890842c8023c8ad2fcc38eab5f2"
+    },
+    {
+      "path": "int8-clean/provenance.json",
+      "size_bytes": 769,
+      "sha256": "f065e43ee4a92933c21d43b40751e0ca484d661e845089eae637277669857240"
+    },
+    {
+      "path": "int8-clean/worker.py",
+      "size_bytes": 76505,
+      "sha256": "c3df144cc4a721d9c233be744247efa4a88ccea908d8fd71301583926db14307"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 2585,
+      "sha256": "e40346aec4cb98ed8516b0c380f485b3bcfd74e6d0b0cbb927061fd6ebf9ff52"
+    },
+    {
+      "path": "specc/config.json",
+      "size_bytes": 2261,
+      "sha256": "9fbbeefaeb6218f4b9cc4370f789afef2cac88d711bd168ab225310830302d1c"
+    },
+    {
+      "path": "specc/provenance.json",
+      "size_bytes": 819,
+      "sha256": "c54e12420f01e086b0876c202d4a0ca52de43d71adbae1ff047dc772253cf244"
+    },
+    {
+      "path": "specc/worker.py",
+      "size_bytes": 127945,
+      "sha256": "ffce9aa543cdcabd62b59a6d059c6c58faffd749cbe4993f8ed0556546a92cc8"
+    },
+    {
+      "path": "srlr/config.json",
+      "size_bytes": 2362,
+      "sha256": "d89df630605a22b490fe4e95d5c4c07c34c3334e14cc73f165c8c20192af0bd7"
+    },
+    {
+      "path": "srlr/mathqa_replay.py",
+      "size_bytes": 121643,
+      "sha256": "78df9986f27233e7fc3c82aad01e791333dc6d0282813e652709f088580c3b1c"
+    },
+    {
+      "path": "srlr/mathqa_replay_config.json",
+      "size_bytes": 3250,
+      "sha256": "56157c953a037b7bd05466b1d3417a5b90618d8d7aae034f9236e112b0a082c5"
+    },
+    {
+      "path": "srlr/provenance.json",
+      "size_bytes": 1805,
+      "sha256": "f24978c1f7e8b8c6580c54718b2237c4353b908d18a996058a1f18970f484597"
+    },
+    {
+      "path": "srlr/worker.py",
+      "size_bytes": 108157,
+      "sha256": "29a4ae163862bf9221be5a3da3dc0bcb55f8c9349d24172f91af50167a669f17"
+    }
+  ]
+}
